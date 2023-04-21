@@ -2,30 +2,38 @@ import React from "react";
 class MyComponent extends React.Component {
     /*dlfdgsd */
     state = {
-        name: '',
-        channel: 'abc'
+        firstName: '',
+        lastName: ''
     }
-    handleOnChangeText = (event) => {
+
+    handleChangeFirstName = (event) => {
         this.setState({
-            name: event.target.value
+            firstName: event.target.value
         })
     }
-    handleCLickButton = () => {
-        alert("click me");
+    handleChangeLastName = (event) => {
+        this.setState({
+            lastName: event.target.value
+        })
     }
-
+    handleSubmit = (event) => {
+        event.preventDefault();
+        console.log('check data input', this.state);
+    }
     render() {
         //let name = 'ngoc';
+        console.log("call render", this.state);
 
         return (
-            <>
-                <div className="frist">
-                    <input value={this.state.name} type="text" onChange={(event) => this.handleOnChangeText(event)}></input>
-                    My Component, My name is {this.state.name} </div>
-                <div className="second">my youtube channel {this.state.channel}</div>
-                <div className="third" ><button onClick={() => this.handleCLickButton()}>Click me</button></div>
-            </>
-
+            <div>
+                <form>
+                    <label htmlFor="fname">First name:</label><br />
+                    <input type="text" value={this.state.firstName} onChange={(event) => this.handleChangeFirstName(event)} /><br />
+                    <label htmlFor="lname">Last name:</label><br />
+                    <input type="text" value={this.state.lastName} onChange={(event) => this.handleChangeLastName(event)} /><br /><br />
+                    <input type="submit" value="Submit" onClick={(event) => this.handleSubmit(event)} />
+                </form>
+            </div>
         )
     }
 }
