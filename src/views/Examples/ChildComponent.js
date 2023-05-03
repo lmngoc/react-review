@@ -2,41 +2,40 @@ import React from "react";
 class ChildComponent extends React.Component {
     /*dlfdgsd */
     state = {
-        firstName: '',
-        lastName: ''
+        showJob: false
     }
 
-    handleChangeFirstName = (event) => {
+    handleShowHide = () => {
         this.setState({
-            firstName: event.target.value
+            showJob: !this.state.showJob
         })
     }
-    handleChangeLastName = (event) => {
-        this.setState({
-            lastName: event.target.value
-        })
-    }
-    handleSubmit = (event) => {
-        event.preventDefault();
-        console.log('check data input', this.state);
-    }
+
     render() {
         //let name = 'ngoc';
         console.log("call render", this.state);
         let { name, age, arrJobs } = this.props;
+        let { showJob } = this.state;
         return (
             <div>
                 Child Component : {name} - {age}
-                <div className="list-job">
-                    {
-                        arrJobs.map((item, index) => {
-                            return (
-                                <div key={item.id}>{item.title} - {item.salary}</div>
-                            )
+                {showJob === false ?
+                    <div><button onClick={() => this.handleShowHide()}>show</button></div>
+                    :
+                    <>
+                        <div className="list-job">
+                            {
+                                arrJobs.map((item, index) => {
+                                    return (
+                                        <div key={item.id}>{item.title} - {item.salary}</div>
+                                    )
 
-                        })
-                    }
-                </div>
+                                })
+                            }
+                        </div>
+                        <div><button onClick={() => this.handleShowHide()}> hide</button></div>
+                    </>
+                }
             </div>
         )
     }
