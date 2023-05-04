@@ -12,7 +12,12 @@ class MyComponent extends React.Component {
         ]
     }
 
-
+    addNewJob = (job) => {
+        //console.log('check job from parent:', job);
+        this.setState({
+            arrJobs: [...this.state.arrJobs, job]
+        })
+    }
 
     render() {
         //let name = 'ngoc';
@@ -20,7 +25,7 @@ class MyComponent extends React.Component {
 
         return (
             <div>
-                <AddComponent />
+                <AddComponent addNewJob={this.addNewJob} />
 
                 <ChildComponent name={this.state.firstName} age={'20'} address={'tphcm'} arrJobs={this.state.arrJobs} />
             </div>
