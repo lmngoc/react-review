@@ -10,6 +10,10 @@ class ChildComponent extends React.Component {
             showJob: !this.state.showJob
         })
     }
+    handleOnClickDelete = (job) => {
+        console.log("handleOnClickDelete: ", job);
+        this.props.deleteAJob(job);
+    }
 
     render() {
         //let name = 'ngoc';
@@ -27,7 +31,7 @@ class ChildComponent extends React.Component {
                             {
                                 arrJobs.map((item, index) => {
                                     return (
-                                        <div key={item.id}>{item.title} - {item.salary}</div>
+                                        <div key={item.id}>{item.title} - {item.salary} <span onClick={() => this.handleOnClickDelete(item)}>x</span></div>
                                     )
 
                                 })
