@@ -15,6 +15,8 @@ class ChildComponent extends React.Component {
         this.props.deleteAJob(job);
     }
 
+
+
     render() {
         //let name = 'ngoc';
         console.log("call render", this.state);
@@ -24,7 +26,7 @@ class ChildComponent extends React.Component {
             <div>
                 Child Component : {name} - {age}
                 {showJob === false ?
-                    <div><button onClick={() => this.handleShowHide()}>show</button></div>
+                    <div><button onClick={() => this.handleShowHide()} style={{ color: 'red' }}>show</button></div>
                     :
                     <>
                         <div className="list-job">

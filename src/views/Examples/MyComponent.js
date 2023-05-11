@@ -26,6 +26,15 @@ class MyComponent extends React.Component {
         });
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        console.log("component did update: Prev state: ", prevState, "current state:", this.state);
+    }
+
+    componentDidMount() {
+        //call API
+        console.log("component did mount");
+    }
+
     render() {
         //let name = 'ngoc';
         console.log("call render", this.state);
