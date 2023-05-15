@@ -1,6 +1,9 @@
 .list-toto-container {
     button {
         margin-left: 10px;
+        &.bt-delete {
+            color: red;
+        }
     }
     .list-toto-content{
         width: 400px;
