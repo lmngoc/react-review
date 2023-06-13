@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { withRouter } from "react-router-dom/cjs/react-router-dom.min";
 class ListUser extends React.Component {
     state = {
         listUser: []
@@ -11,6 +12,10 @@ class ListUser extends React.Component {
         })
 
     }
+    handleOnClickUser = (user) => {
+        console.log("check user", user);
+        this.props.history.push(`/user/${user.id}`);
+    }
     render() {
         let { listUser } = this.state;
         return (
@@ -20,17 +25,16 @@ class ListUser extends React.Component {
                     {listUser && listUser.length > 0 &&
                         listUser.map((item, index) => {
                             return (
-                                <div className="child" key={item.id}>{index + 1} - {item.first_name} {item.last_name} </div>
+                                <div className="child" key={item.id} onClick={() => this.handleOnClickUser(item)}>{index + 1} - {item.first_name} {item.last_name} </div>
                             )
                         })
                     }
 
                 </div>
-                List user
             </div>
         )
     }
 
 }
 
-export default ListUser;
+export default withRouter(ListUser);

@@ -5,6 +5,7 @@ import MyComponent from './Examples/MyComponent';
 import ListTodo from './Todos/ListTodo';
 import Home from './Examples/Home';
 import ListUser from './User/ListUser';
+import DetailUser from './User/DetailUser';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -31,8 +32,11 @@ const App = () => {
             <Route path="/about">
               <MyComponent />
             </Route>
-            <Route path="/user">
+            <Route path="/user" exact>
               <ListUser />
+            </Route>
+            <Route path="/user/:id">
+              <DetailUser />
             </Route>
           </Switch>
         </header>
